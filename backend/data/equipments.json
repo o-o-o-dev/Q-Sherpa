@@ -1,0 +1,1028 @@
+[
+  {
+    "id": 1,
+    "name": "Tent_Espace_1",
+    "weight": 2.4,
+    "capacity": 6
+  },
+  {
+    "id": 2,
+    "name": "Tent_V6_1",
+    "weight": 2.2,
+    "capacity": 6
+  },
+  {
+    "id": 3,
+    "name": "Tent_V6_2",
+    "weight": 2.2,
+    "capacity": 6
+  },
+  {
+    "id": 4,
+    "name": "Tent_V6_3",
+    "weight": 2.2,
+    "capacity": 6
+  },
+  {
+    "id": 5,
+    "name": "Tent_AirRise_1",
+    "weight": 2,
+    "capacity": 4
+  },
+  {
+    "id": 6,
+    "name": "Tent_AirRise_2",
+    "weight": 2,
+    "capacity": 4
+  },
+  {
+    "id": 7,
+    "name": "Tent_AirRise_3",
+    "weight": 2,
+    "capacity": 4
+  },
+  {
+    "id": 8,
+    "name": "Tent_VK60_1",
+    "weight": 2.4,
+    "capacity": 6
+  },
+  {
+    "id": 9,
+    "name": "Tent_Montbell_1",
+    "weight": 2,
+    "capacity": 4
+  },
+  {
+    "id": 10,
+    "name": "Tent_Montbell_2",
+    "weight": 2,
+    "capacity": 4
+  },
+  {
+    "id": 11,
+    "name": "Tent_Montbell_3",
+    "weight": 2,
+    "capacity": 4
+  },
+  {
+    "id": 12,
+    "name": "Hammer_1",
+    "weight": 1,
+    "capacity": null
+  },
+  {
+    "id": 13,
+    "name": "Hammer_2",
+    "weight": 1,
+    "capacity": null
+  },
+  {
+    "id": 14,
+    "name": "Hammer_3",
+    "weight": 1,
+    "capacity": null
+  },
+  {
+    "id": 15,
+    "name": "Hammer_4",
+    "weight": 1,
+    "capacity": null
+  },
+  {
+    "id": 16,
+    "name": "Hammer_5",
+    "weight": 1,
+    "capacity": null
+  },
+  {
+    "id": 17,
+    "name": "Hammer_6",
+    "weight": 1,
+    "capacity": null
+  },
+  {
+    "id": 18,
+    "name": "Hammer_7",
+    "weight": 1,
+    "capacity": null
+  },
+  {
+    "id": 19,
+    "name": "Hammer_8",
+    "weight": 1,
+    "capacity": null
+  },
+  {
+    "id": 20,
+    "name": "GasCan_Large_1",
+    "weight": 1.5,
+    "capacity": null
+  },
+  {
+    "id": 21,
+    "name": "GasCan_Large_2",
+    "weight": 1.5,
+    "capacity": null
+  },
+  {
+    "id": 22,
+    "name": "GasCan_Large_3",
+    "weight": 1.5,
+    "capacity": null
+  },
+  {
+    "id": 23,
+    "name": "GasCan_Large_4",
+    "weight": 1.5,
+    "capacity": null
+  },
+  {
+    "id": 24,
+    "name": "GasCan_Large_5",
+    "weight": 1.5,
+    "capacity": null
+  },
+  {
+    "id": 25,
+    "name": "GasCan_Large_6",
+    "weight": 1.5,
+    "capacity": null
+  },
+  {
+    "id": 26,
+    "name": "GasCan_Large_7",
+    "weight": 1.5,
+    "capacity": null
+  },
+  {
+    "id": 27,
+    "name": "GasCan_Large_8",
+    "weight": 1.5,
+    "capacity": null
+  },
+  {
+    "id": 28,
+    "name": "GasCan_Small_1",
+    "weight": 0.9,
+    "capacity": null
+  },
+  {
+    "id": 29,
+    "name": "GasCan_Small_2",
+    "weight": 0.9,
+    "capacity": null
+  },
+  {
+    "id": 30,
+    "name": "GasCan_Small_3",
+    "weight": 0.9,
+    "capacity": null
+  },
+  {
+    "id": 31,
+    "name": "GasCan_Small_4",
+    "weight": 0.9,
+    "capacity": null
+  },
+  {
+    "id": 32,
+    "name": "GasCan_Small_5",
+    "weight": 0.9,
+    "capacity": null
+  },
+  {
+    "id": 33,
+    "name": "GasCan_Small_6",
+    "weight": 0.9,
+    "capacity": null
+  },
+  {
+    "id": 34,
+    "name": "GasCan_Small_7",
+    "weight": 0.9,
+    "capacity": null
+  },
+  {
+    "id": 35,
+    "name": "GasCan_Small_8",
+    "weight": 0.9,
+    "capacity": null
+  },
+  {
+    "id": 36,
+    "name": "Pole_Set_1",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 37,
+    "name": "Pole_Set_2",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 38,
+    "name": "Pole_Set_3",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 39,
+    "name": "Pole_Set_4",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 40,
+    "name": "Pole_Set_5",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 41,
+    "name": "Pole_Set_6",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 42,
+    "name": "Pole_Set_7",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 43,
+    "name": "Pole_Set_8",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 44,
+    "name": "Peg_Set_1",
+    "weight": 0.4,
+    "capacity": null
+  },
+  {
+    "id": 45,
+    "name": "Peg_Set_2",
+    "weight": 0.4,
+    "capacity": null
+  },
+  {
+    "id": 46,
+    "name": "Peg_Set_3",
+    "weight": 0.4,
+    "capacity": null
+  },
+  {
+    "id": 47,
+    "name": "Peg_Set_4",
+    "weight": 0.4,
+    "capacity": null
+  },
+  {
+    "id": 48,
+    "name": "Peg_Set_5",
+    "weight": 0.4,
+    "capacity": null
+  },
+  {
+    "id": 49,
+    "name": "Peg_Set_6",
+    "weight": 0.4,
+    "capacity": null
+  },
+  {
+    "id": 50,
+    "name": "Peg_Set_7",
+    "weight": 0.4,
+    "capacity": null
+  },
+  {
+    "id": 51,
+    "name": "Peg_Set_8",
+    "weight": 0.4,
+    "capacity": null
+  },
+  {
+    "id": 52,
+    "name": "GroundSheet_1",
+    "weight": 1.5,
+    "capacity": null
+  },
+  {
+    "id": 53,
+    "name": "GroundSheet_2",
+    "weight": 1.5,
+    "capacity": null
+  },
+  {
+    "id": 54,
+    "name": "GroundSheet_3",
+    "weight": 1.5,
+    "capacity": null
+  },
+  {
+    "id": 55,
+    "name": "GroundSheet_4",
+    "weight": 1.5,
+    "capacity": null
+  },
+  {
+    "id": 56,
+    "name": "GroundSheet_5",
+    "weight": 1.5,
+    "capacity": null
+  },
+  {
+    "id": 57,
+    "name": "GroundSheet_6",
+    "weight": 1.5,
+    "capacity": null
+  },
+  {
+    "id": 58,
+    "name": "GroundSheet_7",
+    "weight": 1.5,
+    "capacity": null
+  },
+  {
+    "id": 59,
+    "name": "GroundSheet_8",
+    "weight": 1.5,
+    "capacity": null
+  },
+  {
+    "id": 60,
+    "name": "RepairPack_1",
+    "weight": 1.4,
+    "capacity": null
+  },
+  {
+    "id": 61,
+    "name": "RepairPack_2",
+    "weight": 1.4,
+    "capacity": null
+  },
+  {
+    "id": 62,
+    "name": "RepairPack_3",
+    "weight": 1.4,
+    "capacity": null
+  },
+  {
+    "id": 63,
+    "name": "RepairPack_4",
+    "weight": 1.4,
+    "capacity": null
+  },
+  {
+    "id": 64,
+    "name": "RepairPack_5",
+    "weight": 1.4,
+    "capacity": null
+  },
+  {
+    "id": 65,
+    "name": "RepairPack_6",
+    "weight": 1.4,
+    "capacity": null
+  },
+  {
+    "id": 66,
+    "name": "RepairPack_7",
+    "weight": 1.4,
+    "capacity": null
+  },
+  {
+    "id": 67,
+    "name": "RepairPack_8",
+    "weight": 1.4,
+    "capacity": null
+  },
+  {
+    "id": 68,
+    "name": "Zelt_Emergency_1",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 69,
+    "name": "Zelt_Emergency_2",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 70,
+    "name": "Zelt_Emergency_3",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 71,
+    "name": "Zelt_Emergency_4",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 72,
+    "name": "Zelt_Emergency_5",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 73,
+    "name": "Zelt_Emergency_6",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 74,
+    "name": "Zelt_Emergency_7",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 75,
+    "name": "Zelt_Emergency_8",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 76,
+    "name": "MedKit_1",
+    "weight": 0.9,
+    "capacity": null
+  },
+  {
+    "id": 77,
+    "name": "MedKit_2",
+    "weight": 0.9,
+    "capacity": null
+  },
+  {
+    "id": 78,
+    "name": "MedKit_3",
+    "weight": 0.9,
+    "capacity": null
+  },
+  {
+    "id": 79,
+    "name": "MedKit_4",
+    "weight": 0.9,
+    "capacity": null
+  },
+  {
+    "id": 80,
+    "name": "MedKit_5",
+    "weight": 0.9,
+    "capacity": null
+  },
+  {
+    "id": 81,
+    "name": "MedKit_6",
+    "weight": 0.9,
+    "capacity": null
+  },
+  {
+    "id": 82,
+    "name": "MedKit_7",
+    "weight": 0.9,
+    "capacity": null
+  },
+  {
+    "id": 83,
+    "name": "MedKit_8",
+    "weight": 0.9,
+    "capacity": null
+  },
+  {
+    "id": 84,
+    "name": "PortableToilet_1",
+    "weight": 0.1,
+    "capacity": null
+  },
+  {
+    "id": 85,
+    "name": "PortableToilet_2",
+    "weight": 0.1,
+    "capacity": null
+  },
+  {
+    "id": 86,
+    "name": "PortableToilet_3",
+    "weight": 0.1,
+    "capacity": null
+  },
+  {
+    "id": 87,
+    "name": "PortableToilet_4",
+    "weight": 0.1,
+    "capacity": null
+  },
+  {
+    "id": 88,
+    "name": "PortableToilet_5",
+    "weight": 0.1,
+    "capacity": null
+  },
+  {
+    "id": 89,
+    "name": "PortableToilet_6",
+    "weight": 0.1,
+    "capacity": null
+  },
+  {
+    "id": 90,
+    "name": "PortableToilet_7",
+    "weight": 0.1,
+    "capacity": null
+  },
+  {
+    "id": 91,
+    "name": "PortableToilet_8",
+    "weight": 0.1,
+    "capacity": null
+  },
+  {
+    "id": 92,
+    "name": "Radio_1",
+    "weight": 0.3,
+    "capacity": null
+  },
+  {
+    "id": 93,
+    "name": "Radio_2",
+    "weight": 0.3,
+    "capacity": null
+  },
+  {
+    "id": 94,
+    "name": "Radio_3",
+    "weight": 0.3,
+    "capacity": null
+  },
+  {
+    "id": 95,
+    "name": "Radio_4",
+    "weight": 0.3,
+    "capacity": null
+  },
+  {
+    "id": 96,
+    "name": "Radio_5",
+    "weight": 0.3,
+    "capacity": null
+  },
+  {
+    "id": 97,
+    "name": "Radio_6",
+    "weight": 0.3,
+    "capacity": null
+  },
+  {
+    "id": 98,
+    "name": "Radio_7",
+    "weight": 0.3,
+    "capacity": null
+  },
+  {
+    "id": 99,
+    "name": "Radio_8",
+    "weight": 0.3,
+    "capacity": null
+  },
+  {
+    "id": 100,
+    "name": "BearSpray_1",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 101,
+    "name": "BearSpray_2",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 102,
+    "name": "BearSpray_3",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 103,
+    "name": "BearSpray_4",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 104,
+    "name": "BearSpray_5",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 105,
+    "name": "BearSpray_6",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 106,
+    "name": "BearSpray_7",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 107,
+    "name": "BearSpray_8",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 108,
+    "name": "Burner_Stove_1",
+    "weight": 0.2,
+    "capacity": null
+  },
+  {
+    "id": 109,
+    "name": "Burner_Stove_2",
+    "weight": 0.2,
+    "capacity": null
+  },
+  {
+    "id": 110,
+    "name": "Burner_Stove_3",
+    "weight": 0.2,
+    "capacity": null
+  },
+  {
+    "id": 111,
+    "name": "Burner_Stove_4",
+    "weight": 0.2,
+    "capacity": null
+  },
+  {
+    "id": 112,
+    "name": "Burner_Stove_5",
+    "weight": 0.2,
+    "capacity": null
+  },
+  {
+    "id": 113,
+    "name": "Burner_Stove_6",
+    "weight": 0.2,
+    "capacity": null
+  },
+  {
+    "id": 114,
+    "name": "Burner_Stove_7",
+    "weight": 0.2,
+    "capacity": null
+  },
+  {
+    "id": 115,
+    "name": "Burner_Stove_8",
+    "weight": 0.2,
+    "capacity": null
+  },
+  {
+    "id": 116,
+    "name": "Windshield_1",
+    "weight": 0.1,
+    "capacity": null
+  },
+  {
+    "id": 117,
+    "name": "Windshield_2",
+    "weight": 0.1,
+    "capacity": null
+  },
+  {
+    "id": 118,
+    "name": "Windshield_3",
+    "weight": 0.1,
+    "capacity": null
+  },
+  {
+    "id": 119,
+    "name": "Windshield_4",
+    "weight": 0.1,
+    "capacity": null
+  },
+  {
+    "id": 120,
+    "name": "Windshield_5",
+    "weight": 0.1,
+    "capacity": null
+  },
+  {
+    "id": 121,
+    "name": "Windshield_6",
+    "weight": 0.1,
+    "capacity": null
+  },
+  {
+    "id": 122,
+    "name": "Windshield_7",
+    "weight": 0.1,
+    "capacity": null
+  },
+  {
+    "id": 123,
+    "name": "Windshield_8",
+    "weight": 0.1,
+    "capacity": null
+  },
+  {
+    "id": 124,
+    "name": "Kocher_Large_1",
+    "weight": 0.9,
+    "capacity": null
+  },
+  {
+    "id": 125,
+    "name": "Kocher_Large_2",
+    "weight": 0.9,
+    "capacity": null
+  },
+  {
+    "id": 126,
+    "name": "Kocher_Large_3",
+    "weight": 0.9,
+    "capacity": null
+  },
+  {
+    "id": 127,
+    "name": "Kocher_Large_4",
+    "weight": 0.9,
+    "capacity": null
+  },
+  {
+    "id": 128,
+    "name": "Kocher_Large_5",
+    "weight": 0.9,
+    "capacity": null
+  },
+  {
+    "id": 129,
+    "name": "Kocher_Large_6",
+    "weight": 0.9,
+    "capacity": null
+  },
+  {
+    "id": 130,
+    "name": "Kocher_Large_7",
+    "weight": 0.9,
+    "capacity": null
+  },
+  {
+    "id": 131,
+    "name": "Kocher_Large_8",
+    "weight": 0.9,
+    "capacity": null
+  },
+  {
+    "id": 132,
+    "name": "Kocher_Small_1",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 133,
+    "name": "Kocher_Small_2",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 134,
+    "name": "Kocher_Small_3",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 135,
+    "name": "Kocher_Small_4",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 136,
+    "name": "Kocher_Small_5",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 137,
+    "name": "Kocher_Small_6",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 138,
+    "name": "Kocher_Small_7",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 139,
+    "name": "Kocher_Small_8",
+    "weight": 0.6,
+    "capacity": null
+  },
+  {
+    "id": 140,
+    "name": "Shamoji_1",
+    "weight": 0.05,
+    "capacity": null
+  },
+  {
+    "id": 141,
+    "name": "Shamoji_2",
+    "weight": 0.05,
+    "capacity": null
+  },
+  {
+    "id": 142,
+    "name": "Shamoji_3",
+    "weight": 0.05,
+    "capacity": null
+  },
+  {
+    "id": 143,
+    "name": "Shamoji_4",
+    "weight": 0.05,
+    "capacity": null
+  },
+  {
+    "id": 144,
+    "name": "Shamoji_5",
+    "weight": 0.05,
+    "capacity": null
+  },
+  {
+    "id": 145,
+    "name": "Shamoji_6",
+    "weight": 0.05,
+    "capacity": null
+  },
+  {
+    "id": 146,
+    "name": "Shamoji_7",
+    "weight": 0.05,
+    "capacity": null
+  },
+  {
+    "id": 147,
+    "name": "Shamoji_8",
+    "weight": 0.05,
+    "capacity": null
+  },
+  {
+    "id": 148,
+    "name": "Otama_1",
+    "weight": 0.1,
+    "capacity": null
+  },
+  {
+    "id": 149,
+    "name": "Otama_2",
+    "weight": 0.1,
+    "capacity": null
+  },
+  {
+    "id": 150,
+    "name": "Otama_3",
+    "weight": 0.1,
+    "capacity": null
+  },
+  {
+    "id": 151,
+    "name": "Otama_4",
+    "weight": 0.1,
+    "capacity": null
+  },
+  {
+    "id": 152,
+    "name": "Otama_5",
+    "weight": 0.1,
+    "capacity": null
+  },
+  {
+    "id": 153,
+    "name": "Otama_6",
+    "weight": 0.1,
+    "capacity": null
+  },
+  {
+    "id": 154,
+    "name": "Otama_7",
+    "weight": 0.1,
+    "capacity": null
+  },
+  {
+    "id": 155,
+    "name": "Otama_8",
+    "weight": 0.1,
+    "capacity": null
+  },
+  {
+    "id": 156,
+    "name": "Saibashi_1",
+    "weight": 0.05,
+    "capacity": null
+  },
+  {
+    "id": 157,
+    "name": "Saibashi_2",
+    "weight": 0.05,
+    "capacity": null
+  },
+  {
+    "id": 158,
+    "name": "Saibashi_3",
+    "weight": 0.05,
+    "capacity": null
+  },
+  {
+    "id": 159,
+    "name": "Saibashi_4",
+    "weight": 0.05,
+    "capacity": null
+  },
+  {
+    "id": 160,
+    "name": "Saibashi_5",
+    "weight": 0.05,
+    "capacity": null
+  },
+  {
+    "id": 161,
+    "name": "Saibashi_6",
+    "weight": 0.05,
+    "capacity": null
+  },
+  {
+    "id": 162,
+    "name": "Saibashi_7",
+    "weight": 0.05,
+    "capacity": null
+  },
+  {
+    "id": 163,
+    "name": "Saibashi_8",
+    "weight": 0.05,
+    "capacity": null
+  },
+  {
+    "id": 164,
+    "name": "Manaita_1",
+    "weight": 0.2,
+    "capacity": null
+  },
+  {
+    "id": 165,
+    "name": "Manaita_2",
+    "weight": 0.2,
+    "capacity": null
+  },
+  {
+    "id": 166,
+    "name": "Manaita_3",
+    "weight": 0.2,
+    "capacity": null
+  },
+  {
+    "id": 167,
+    "name": "Manaita_4",
+    "weight": 0.2,
+    "capacity": null
+  },
+  {
+    "id": 168,
+    "name": "Manaita_5",
+    "weight": 0.2,
+    "capacity": null
+  },
+  {
+    "id": 169,
+    "name": "Manaita_6",
+    "weight": 0.2,
+    "capacity": null
+  },
+  {
+    "id": 170,
+    "name": "Manaita_7",
+    "weight": 0.2,
+    "capacity": null
+  },
+  {
+    "id": 171,
+    "name": "Manaita_8",
+    "weight": 0.2,
+    "capacity": null
+  }
+]
