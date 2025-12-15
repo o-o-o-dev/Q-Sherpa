@@ -16,7 +16,7 @@ from src.models import (
 )
 from src.loader import equipments, members
 
-app = FastAPI(title="Kytos Orchestration API")
+app = FastAPI(title="Q-Sherpa API")
 
 # CORS
 origins = [
