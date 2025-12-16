@@ -1,0 +1,9 @@
+@use "variables" as *;
+body {
+  color: $on-surface;
+  background: linear-gradient(
+    45deg,
+    rgba(130, 93, 171, 0.48) 0%,
+    rgba(41, 153, 103, 0.29) 100%
+  );
+}
