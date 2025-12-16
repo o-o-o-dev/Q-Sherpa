@@ -1,0 +1,11 @@
+{
+  "name": "q-sherpa",
+  "compatibility_date": "2025-12-16",
+  "main": "./.output/server/index.mjs",
+  "routes": [
+    {
+      "pattern": "q-sherpa.o-o-o.dev",
+      "custom_domain": true
+    }
+  ]
+}
