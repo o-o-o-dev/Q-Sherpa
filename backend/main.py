@@ -68,14 +68,3 @@ def equipment(req: EquipmentRequest):
     班分けを考慮して装備を割り当てる
     """
     return equipment_solver(req.teams, req.equipments, req.settings)
-
-@app.get("/{full_path:path}")
-def catch_all(full_path: str, request: Request):
-    return {
-        "status": "Debug Mode",
-        "message": "This is a catch-all endpoint for debugging purposes.",
-        "requested_path": full_path,
-        "actual_path_seen_by_fastapi": request.url.path,
-        "root_path_setting": request.scope.get("root_path"),
-        "host_header": request.headers.get("host")
-    }
