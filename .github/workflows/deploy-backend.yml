@@ -10,7 +10,7 @@ on:
 env:
   AWS_REGION: ap-northeast-1
   ECR_REPOSITORY: o-o-o.dev/qi4u/q-sherpa
-  LAMBDA_FUNCTION_NAME: api.q-sherpa.o-o-o.dev
+  LAMBDA_FUNCTION_NAME: q-sherpa
 
 jobs:
   deploy:
