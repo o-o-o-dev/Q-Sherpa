@@ -47,7 +47,7 @@ EquipmentList = TypeAdapter(List[Equipment])
 
 
 class GroupingSettings(BaseModel):
-    num_reads: int = 100
+    num_reads: int = 1000
     groupSizeWeight: float = 1.0
     gradePopulationWeight: float = 1.0
     genderShouldBeZeroWeight: float = 1.0

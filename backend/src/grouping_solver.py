@@ -2,7 +2,7 @@ from typing import List
 from fastapi import HTTPException
 import jijmodeling as jm
 from ommx.v1 import Instance
-from src.models import GroupingSettings, Member
+from src.models import GroupingSettings, Member, RoleAuthoritative, RoleFixed
 from ommx_openjij_adapter import OMMXOpenJijSAAdapter
 
 
@@ -13,18 +13,19 @@ def grouping_problem():
 
     # --- 変数定義 ---
     Grade = jm.Placeholder("grade", ndim=2, description="メンバーの学年")
-    M = Grade.len_at(0, latex="M", description="メンバーの数")
-    m = jm.Element("m", belong_to=(0, M), description="メンバーインデックス")
-    m2 = jm.Element("m2", belong_to=(0, M), description="メンバーインデックス2")
-    G = Grade.len_at(1, latex="G", description="学年の種類数")
+    G = Grade.len_at(0, latex="G", description="学年の種類数")
     g = jm.Element("g", belong_to=(0, G), description="学年インデックス")
 
-    Sex = jm.Placeholder("sex", shape=(M, None), description="メンバーの性別")
-    S = Sex.len_at(1, latex="S", description="性別の種類数")
+    M = Grade.len_at(1, latex="M", description="メンバーの数")
+    m = jm.Element("m", belong_to=(0, M), description="メンバーインデックス")
+    m2 = jm.Element("m2", belong_to=(0, M), description="メンバーインデックス2")
+
+    Sex = jm.Placeholder("sex", shape=(None, M), description="メンバーの性別")
+    S = Sex.len_at(0, latex="S", description="性別の種類数")
     s = jm.Element("s", belong_to=(0, S), description="性別インデックス")
 
-    Role = jm.Placeholder("role", shape=(M, None), description="メンバーの係")
-    R = Role.len_at(1, latex="R", description="係の種類数")
+    Role = jm.Placeholder("role", shape=(None, M), description="メンバーの係")
+    R = Role.len_at(0, latex="R", description="係の種類数")
     r = jm.Element("r", belong_to=(0, R), description="係インデックス")
 
     Can_CL = jm.Placeholder("cancl", shape=(M,), description="メンバーのCL資格フラグ")
@@ -33,9 +34,9 @@ def grouping_problem():
     Driver = jm.Placeholder("driver", shape=(M,), description="メンバーの運転手フラグ")
 
     Carrier = jm.Placeholder(
-        "carrier", shape=(M, None), description="メンバーの通信キャリア"
+        "carrier", shape=(None, M), description="メンバーの通信キャリア"
     )
-    C = Carrier.len_at(1, latex="C", description="キャリアの種類数")
+    C = Carrier.len_at(0, latex="C", description="キャリアの種類数")
     c = jm.Element("c", belong_to=(0, C), description="キャリアインデックス")
 
     Experience = jm.Placeholder(
@@ -87,8 +88,8 @@ def grouping_problem():
     grade_population_weight = jm.Placeholder(
         "gradePopulationWeight", description="学年均等化の重み"
     )
-    grade_population_per_team = jm.sum(m, Grade[m, g] * x[k, m])
-    grade_total_population = jm.sum(m, Grade[m, g])
+    grade_population_per_team = jm.sum(m, Grade[g, m] * x[k, m])
+    grade_total_population = jm.sum(m, Grade[g, m])
     grade_ideal_population = grade_total_population / K
     problem += (
         jm.sum([k, g], (grade_population_per_team - grade_ideal_population) ** 2)
@@ -102,7 +103,7 @@ def grouping_problem():
         "genderShouldBeZeroWeight", description="同じ性別が0人であるべきという重み"
     )
     linear_penalty = (
-        jm.sum([m, s, k], Sex[m, s] * x[k, m]) * gender_should_be_zero_weight
+        jm.sum([m, s, k], Sex[s, m] * x[k, m]) * gender_should_be_zero_weight
     )
     ## 複数人時のボーナス
     gender_pair_bonus_weight = jm.Placeholder(
@@ -110,7 +111,7 @@ def grouping_problem():
         description="同じ性別は多いほうがいいという重み",
     )
     pair_bonus = (
-        jm.sum([m, (m2, m != m2), s, k], Sex[m, s] * Sex[m2, s] * x[k, m] * x[k, m2])
+        jm.sum([m, (m2, m != m2), s, k], Sex[s, m] * Sex[s, m2] * x[k, m] * x[k, m2])
         * gender_pair_bonus_weight
     )
     problem += linear_penalty - pair_bonus
@@ -119,8 +120,8 @@ def grouping_problem():
     role_population_weight = jm.Placeholder(
         "rolePopulationWeight", description="係の均等化の重み"
     )
-    role_population_per_team = jm.sum(m, Role[m, r] * x[k, m])
-    role_total_population = jm.sum(m, Role[m, r])
+    role_population_per_team = jm.sum(m, Role[r, m] * x[k, m])
+    role_total_population = jm.sum(m, Role[r, m])
     role_ideal_population = role_total_population / K
     problem += (
         jm.sum([k, r], (role_population_per_team - role_ideal_population) ** 2)
@@ -143,8 +144,8 @@ def grouping_problem():
     carrier_population_weight = jm.Placeholder(
         "carrierPopulationWeight", description="通信キャリアの均等化の重み"
     )
-    carrier_population_per_team = jm.sum(m, Carrier[m, c] * x[k, m])
-    carrier_total_population = jm.sum(m, Carrier[m, c])
+    carrier_population_per_team = jm.sum(m, Carrier[c, m] * x[k, m])
+    carrier_total_population = jm.sum(m, Carrier[c, m])
     carrier_ideal_population = carrier_total_population / K
     problem += (
         jm.sum([k, c], (carrier_population_per_team - carrier_ideal_population) ** 2)
@@ -154,7 +155,8 @@ def grouping_problem():
     # 経験年数の均等化 (Total Experience Balancing)
     # (チームの合計経験値 - 理想)の二乗和を最小化
     inter_team_experience_similarity_weight = jm.Placeholder(
-        "interTeamExperienceSimilarityWeight", description="経験年数の和のチーム間での均等化の重み"
+        "interTeamExperienceSimilarityWeight",
+        description="経験年数の和のチーム間での均等化の重み",
     )
     group_exp_sum = jm.sum(m, Experience[m] * x[k, m])
     ideal_exp_sum = jm.sum(m, Experience[m]) / K
@@ -164,7 +166,8 @@ def grouping_problem():
     # グループ内のメンバー同士の経験年数の差の二乗を最小化する
     # (mとm2が同じグループにいる時だけ、(Experience[m] - Experience[m2])^2 のコストがかかる)
     intra_team_experience_similarity_weight = jm.Placeholder(
-        "intraTeamExperienceSimilarityWeight", description="班ごとの経験年数の類似化の重み"
+        "intraTeamExperienceSimilarityWeight",
+        description="班ごとの経験年数の類似化の重み",
     )
     problem += (
         jm.sum([k, m, m2], (Experience[m] - Experience[m2]) ** 2 * x[k, m] * x[k, m2])
@@ -185,17 +188,29 @@ def grouping_solver(
     # --- 問題定義 ---
     instance_data = {
         "K": num_teams,
-        "grade": [[member.grade for member in members]],
+        "grade": [
+            [1 if member.grade == grade else 0 for member in members]
+            for grade in [1, 2, 3]
+        ],
         "sex": [
             [1 if member.gender == gender else 0 for member in members]
-            for gender in ["male", "female"]
+            for gender in ["M", "F"]
         ],
         "role": [
             [1 if member.role_fixed == role else 0 for member in members]
-            for role in ["equipment", "weather", "meal"]
+            for role in [RoleFixed.Equipment, RoleFixed.Weather, RoleFixed.Meal]
         ],
-        "cancl": [1 if member.role_authoritative == "CL" else 0 for member in members],
-        "cansl": [1 if member.role_authoritative == "SL" else 0 for member in members],
+        "cancl": [
+            1 if member.role_authoritative == RoleAuthoritative.CL else 0
+            for member in members
+        ],
+        "cansl": [
+            1
+            if member.role_authoritative == RoleAuthoritative.SL
+            or member.role_authoritative == RoleAuthoritative.CL
+            else 0
+            for member in members
+        ],
         "driver": [1 if member.driver else 0 for member in members],
         "carrier": [
             [1 if member.carrier == carrier else 0 for member in members]
