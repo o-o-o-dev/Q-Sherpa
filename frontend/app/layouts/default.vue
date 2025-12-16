@@ -11,7 +11,10 @@
           alt="Jishinkai Club Logo"
           width="100"
         />
-        <p>&copy; 2025 自然に親しむ会. All rights reserved.</p>
+        <p>
+          &copy; 2025 自然に親しむ会, Soma Terao, Morio Chiba, Tatsuhiro Araki.
+          All rights reserved.
+        </p>
       </div>
     </footer>
   </div>

@@ -19,7 +19,7 @@ const playAnimation = () => {
   gsap.fromTo(
     mountain.value,
     { drawSVG: "0%" },
-    { drawSVG: "100%", duration: 2, stagger: 2, ease: "power1.in" },
+    { drawSVG: "100%", duration: 2, stagger: 2, ease: "power1.in" }
   );
 
   gsap.fromTo(
@@ -31,7 +31,7 @@ const playAnimation = () => {
       stagger: 2,
       ease: "power1.inOut",
       delay: 1.5,
-    },
+    }
   );
 };
 
@@ -62,7 +62,7 @@ const fadeUp = (element: string | Element, options = {}) => {
         start: "top 80%",
         toggleActions: "play none none pause",
       },
-    },
+    }
   );
 };
 
@@ -91,7 +91,7 @@ const fadeIn = (element: string, option = {}) => {
         start: "top 80%",
         toggleActions: "play none none pause",
       },
-    },
+    }
   );
 };
 
@@ -123,7 +123,7 @@ onMounted(() => {
           量子アニーリング技術で、登山の班編成と装備分配を最適化。
         </p>
         <div ref="heroButton" class="hero-action">
-          <button>試す</button>
+          <button @click="$router.push('/demo')">試す</button>
         </div>
       </div>
       <div class="hero-visual">
