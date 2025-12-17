@@ -3,7 +3,7 @@
   "compatibility_date": "2025-12-16",
   "main": "./.output/server/index.mjs",
   "vars": {
-    "API_PROXY": "https://vf5phyqu5pmc54d3ttkfl5wkxq0gpbfy.lambda-url.ap-northeast-1.on.aws/**"
+    "API_PROXY": "https://api.q-sherpa.o-o-o.dev/**"
   },
   "routes": [
     {
