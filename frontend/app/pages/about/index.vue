@@ -698,6 +698,11 @@ onBeforeUnmount(() => {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
+
+  // Allow grid items to shrink even if they contain long math / code.
+  > * {
+    min-width: 0;
+  }
 }
 
 .grid--2 {
@@ -710,6 +715,10 @@ onBeforeUnmount(() => {
   padding: 1rem;
   position: relative;
   background: rgba($color-bg-primary, 0.6);
+
+  // Prevent MathJax (or other long inline content) from forcing overflow
+  // that visually overlaps adjacent grid columns.
+  min-width: 0;
 
   transition: transform 120ms ease, border-color 120ms ease;
 
@@ -743,6 +752,18 @@ onBeforeUnmount(() => {
   p {
     color: $on-surface-variant;
     line-height: 1.65;
+  }
+
+  :deep(mjx-container) {
+    max-width: 100%;
+  }
+
+  :deep(mjx-container[display="true"]) {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
