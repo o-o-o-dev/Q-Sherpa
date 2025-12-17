@@ -1,6 +1,6 @@
 <script setup lang="ts">
 useHead({
-  titleTemplate: "%s - 班編成・装備分配最適化ツール",
+  titleTemplate: "%s | Q-Sherpa 班編成・装備分配最適化ツール",
   script: [
     {
       id: "MathJax-script",

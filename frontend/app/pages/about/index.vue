@@ -220,9 +220,8 @@
                 <ul class="list">
                   <li>
                     <span class="mono">one_group_per_member</span
-                    >：各メンバーは必ずどこか1チーム （<span class="mono"
-                      >$$\sum_k x_{k,m}=1$$</span
-                    >）。
+                    >：各メンバーは必ずどこか1チーム
+                    <span class="mono">$$\sum_k x_{k,m}=1$$</span>
                   </li>
                   <li>
                     <span class="mono">one_cl_per_team</span>,
@@ -231,21 +230,18 @@
                   </li>
                   <li>
                     <span class="mono">distinct_roles</span>：同一人物が CL と
-                    SL を兼任しない （<span class="mono"
-                      >$$cl_{k,m}+sl_{k,m}\le 1$$</span
-                    >）。
+                    SL を兼任しない
+                    <span class="mono">$$cl_{k,m}+sl_{k,m}\le 1$$</span>
                   </li>
                   <li>
                     <span class="mono">qualification_*</span>：資格がある人だけ
                     CL/SL に割当可
                     <span class="mono">$$cl_{k,m}\le cancl_m$$</span>
-                    等）。
                   </li>
                   <li>
                     <span class="mono">consistency_*</span>：CL/SL
                     に割り当てた人は、そのチームに所属
                     <span class="mono">$$cl_{k,m}\le x_{k,m}$$</span>
-                    等。
                   </li>
                 </ul>
               </MathJax>
@@ -288,7 +284,7 @@
                     <span class="mono">全体の装備価値（パイ）</span>：
                     $$T=\sum_{m'=0}^{M-1}\sum_{e=0}^{E-1}
                     equipment_e\,x_{m',e}$$ 制約により、割当が完全なら実質
-                    \(T\approx\sum_e equipment_e\)。
+                    \(T\approx\sum_e equipment_e\)
                   </li>
                   <li>
                     <span class="mono">経験値の平均（正規化の基準）</span>：
@@ -297,16 +293,16 @@
                   </li>
                   <li>
                     <span class="mono">経験に応じた目標比率</span>：
-                    $$r_m=(experience_m/\overline{experience})^P$$。 \(P=0\)
+                    $$r_m=(experience_m/\overline{experience})^P$$ \(P=0\)
                     なら全員同じ目標、\(P\) を上げるほど経験差を強く反映します。
                   </li>
                   <li>
                     <span class="mono">目標負荷（ターゲット）</span>： $$\hat
-                    L_m=(T/M)\,r_m$$。
+                    L_m=(T/M)\,r_m$$
                   </li>
                   <li>
                     <span class="mono">ズレ（偏差）と二乗</span>： $$(L_m-\hat
-                    L_m)^2$$。二乗により、過不足の符号を消して「大きなズレ」を強く罰します。
+                    L_m)^2$$二乗により、過不足の符号を消して「大きなズレ」を強く罰します。
                   </li>
                   <li>
                     <span class="mono">全員分を合計して最小化</span>：
@@ -315,7 +311,7 @@
                   </li>
                   <li>
                     <span class="mono">制約（全装備を必ず1人へ）</span>：
-                    $$\sum_{m=0}^{M-1} x_{m,e}=1\ (\forall e)$$。
+                    $$\sum_{m=0}^{M-1} x_{m,e}=1\ (\forall e)$$
                   </li>
                 </ol>
               </MathJax>
