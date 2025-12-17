@@ -388,7 +388,15 @@
             </TransitionGroup>
           </div>
 
-          <div class="panel__actions">
+          <div class="panel__actions panel__actions--between">
+            <button
+              class="btn btn--ghost"
+              type="button"
+              :disabled="groupingLoading"
+              @click="goMemberSelection()"
+            >
+              メンバー選択に戻る
+            </button>
             <button
               class="btn btn--primary"
               type="button"
@@ -611,6 +619,16 @@
           </div>
 
           <div v-else class="result">
+            <div class="panel__actions panel__actions--between">
+              <button
+                class="btn btn--ghost"
+                type="button"
+                :disabled="allocationLoading"
+                @click="goEquipmentSelectionFromResult()"
+              >
+                装備選択に戻る
+              </button>
+            </div>
             <div class="result__summary card">
               <h3>サマリー</h3>
               <dl class="summary">
@@ -966,6 +984,13 @@ const goEquipmentSelection = async () => {
   await loadEquipments();
 };
 
+const goMemberSelection = () => {
+  // Reset the visualization state so the user can tweak inputs and rerun.
+  groupingError.value = null;
+  teams.value = [];
+  currentStep.value = "members";
+};
+
 // --- Phase 3: equipments ---
 const equipmentsLoading = ref(false);
 const equipments = ref<EquipmentAPI[]>([]);
@@ -1097,6 +1122,13 @@ const runEquipmentAllocation = async () => {
   }
 };
 
+const goEquipmentSelectionFromResult = () => {
+  // Reset allocation output so rerunning feels explicit.
+  allocationError.value = null;
+  allocation.value = [];
+  currentStep.value = "equipment";
+};
+
 onMounted(async () => {
   await loadMembers();
 });
@@ -1201,6 +1233,11 @@ onMounted(async () => {
   display: flex;
   justify-content: flex-end;
   margin-top: 1rem;
+  gap: 0.75rem;
+}
+
+.panel__actions--between {
+  justify-content: space-between;
 }
 
 .panel__split {
