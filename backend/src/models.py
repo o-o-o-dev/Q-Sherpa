@@ -52,11 +52,11 @@ class GroupingSettings(BaseModel):
     gradePopulationWeight: float = 1.0
     genderShouldBeZeroWeight: float = 1.0
     genderPairBonusWeight: float = 1.0
-    rolePopulationWeight: float = 1.0
-    driverPopulationWeight: float = 1.0
-    carrierPopulationWeight: float = 1.0
-    interTeamExperienceSimilarityWeight: float = 1.0
-    intraTeamExperienceSimilarityWeight: float = 1.0
+    rolePopulationWeight: float = 2.0
+    driverPopulationWeight: float = 1.5
+    carrierPopulationWeight: float = 0.3
+    interTeamExperienceSimilarityWeight: float = 0.5
+    intraTeamExperienceSimilarityWeight: float = 0.5
 
 
 class EquipmentSettings(BaseModel):

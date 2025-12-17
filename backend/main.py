@@ -1,6 +1,6 @@
 import os
 from typing import List
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -22,10 +22,8 @@ app = FastAPI(title="Q-Sherpa API")
 origins = [
     "http://localhost",
     "http://127.0.0.1",
+    "https://q-sherpa.o-o-o.dev",
 ]
-vercel_origin = os.environ.get("FRONTEND_ORIGIN")
-if vercel_origin:
-    origins.append(vercel_origin)
 
 app.add_middleware(
     CORSMiddleware,
