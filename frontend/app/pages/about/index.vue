@@ -72,7 +72,8 @@
             <article class="card">
               <h3>API 連携</h3>
               <p>
-                フロントは Nuxt の proxy を利用して
+                フロントは Nuxt の proxy を利用してAWS
+                Lambdaにホストされているバックエンドに
                 <span class="mono">/api/*</span> にアクセスします。 例:
                 <span class="mono">GET /api/members</span>,
                 <span class="mono">POST /api/grouping</span>。
@@ -91,9 +92,9 @@
             <article class="card">
               <h3>Frontend</h3>
               <ul class="list">
-                <li>Nuxt 3/4 系（Pages ルーティング）</li>
+                <li>Nuxt.js</li>
                 <li>Vue 3 + TypeScript</li>
-                <li>SCSS（スコープド）</li>
+                <li>SCSS</li>
                 <li>
                   Proxy 経由で API を呼び出し（<span class="mono">/api/**</span
                   >）
@@ -129,6 +130,126 @@
                 制約（例:
                 全員は必ず1チーム、各チームにCL/SLは各1名、CLとSLは同一人物不可）を満たす解を探索します。
               </p>
+
+              <h4 class="subhead">目的関数（各項の意味）</h4>
+              <MathJax>
+                <ul class="list">
+                  <li>
+                    <span class="mono">groupSizeWeight</span>： 各チームの人数が
+                    <span class="mono">\(M/K\)</span> に近づくように
+                    <span class="mono mathjax"
+                      >$$(\sum_m x_{k,m} - M/K)^2$$</span
+                    >
+                    を最小化します。
+                  </li>
+                  <li>
+                    <span class="mono">gradePopulationWeight</span>：
+                    学年（または学年カテゴリ）ごとの人数がチーム間で偏らないように
+                    <span class="mono"
+                      >$$(\sum_m grade_{g,m}x_{k,m} - (\sum_m
+                      grade_{g,m})/K)^2$$</span
+                    >
+                    を最小化します。
+                  </li>
+                  <li>
+                    <span class="mono">genderShouldBeZeroWeight</span>：
+                    チーム内の性別人数
+                    <span class="mono">$$\sum_m sex_{s,m}x_{k,m}$$</span>
+                    に対する（用途次第で）ペナルティ項です。
+                    値を上げると対象性別の人数を抑制する方向に働きます。
+                  </li>
+                  <li>
+                    <span class="mono">genderPairBonusWeight</span>：
+                    同性ペアの数
+                    <span class="mono"
+                      >$$\sum_{m\neq m2}
+                      sex_{s,m}sex_{s,m2}x_{k,m}x_{k,m2}$$</span
+                    >
+                    に対して“マイナス”で入っているため、値を上げるほど
+                    同性が同じチームに集まる（ペアが増える）方向にバイアスがかかります。
+                  </li>
+                  <li>
+                    <span class="mono">rolePopulationWeight</span>：
+                    係（equipment / weather / meal
+                    など）がチーム間で偏らないように
+                    <span class="mono"
+                      >$$(\sum_m role_{r,m}x_{k,m} - (\sum_m
+                      role_{r,m})/K)^2$$</span
+                    >
+                    を最小化します。
+                  </li>
+                  <li>
+                    <span class="mono">driverPopulationWeight</span>：
+                    ドライバー人数がチーム間で偏らないように
+                    <span class="mono"
+                      >$$(\sum_m driver_m x_{k,m} - (\sum_m
+                      driver_m)/K)^2$$</span
+                    >
+                    を最小化します。
+                  </li>
+                  <li>
+                    <span class="mono">carrierPopulationWeight</span>：
+                    通信キャリア（docomo/au/softbank/rakuten
+                    など）がチーム間で偏らないように
+                    <span class="mono"
+                      >$$(\sum_m carrier_{c,m}x_{k,m} - (\sum_m
+                      carrier_{c,m})/K)^2$$</span
+                    >
+                    を最小化します。
+                  </li>
+                  <li>
+                    <span class="mono">interTeamExperienceSimilarityWeight</span
+                    >： チームごとの経験年数合計が均等になるように
+                    <span class="mono"
+                      >$$(\sum_m experience_m x_{k,m} - (\sum_m
+                      experience_m)/K)^2$$</span
+                    >
+                    を最小化します（チーム間の“均等化”）。
+                  </li>
+                  <li>
+                    <span class="mono">intraTeamExperienceSimilarityWeight</span
+                    >： 同じチーム内の経験年数差
+                    <span class="mono"
+                      >$$(experience_m - experience_{m2})^2$$</span
+                    >
+                    を小さくするように働きます（チーム内の“同質化”）。
+                  </li>
+                </ul>
+
+                <h4 class="subhead">制約（s.t.）の要点</h4>
+                <ul class="list">
+                  <li>
+                    <span class="mono">one_group_per_member</span
+                    >：各メンバーは必ずどこか1チーム （<span class="mono"
+                      >$$\sum_k x_{k,m}=1$$</span
+                    >）。
+                  </li>
+                  <li>
+                    <span class="mono">one_cl_per_team</span>,
+                    <span class="mono">one_sl_per_team</span>： 各チームに CL/SL
+                    を各1名。
+                  </li>
+                  <li>
+                    <span class="mono">distinct_roles</span>：同一人物が CL と
+                    SL を兼任しない （<span class="mono"
+                      >$$cl_{k,m}+sl_{k,m}\le 1$$</span
+                    >）。
+                  </li>
+                  <li>
+                    <span class="mono">qualification_*</span>：資格がある人だけ
+                    CL/SL に割当可
+                    <span class="mono">$$cl_{k,m}\le cancl_m$$</span>
+                    等）。
+                  </li>
+                  <li>
+                    <span class="mono">consistency_*</span>：CL/SL
+                    に割り当てた人は、そのチームに所属
+                    <span class="mono">$$cl_{k,m}\le x_{k,m}$$</span>
+                    等。
+                  </li>
+                </ul>
+              </MathJax>
+
               <p class="muted">
                 /demo
                 の「班分け設定（重み）」は、このペナルティ項の優先度を調整します。
@@ -144,6 +265,60 @@
                 経験年数が高いメンバーほど多く持てるように調整パラメータ
                 <span class="mono">P</span> を導入しています。
               </p>
+
+              <h4 class="subhead">目的関数（各項の意味）</h4>
+              <MathJax>
+                <ol class="list">
+                  <li>
+                    <span class="mono">データ（定数）</span>： メンバー数
+                    \(M\)装備数 \(E\)装備の重み \(equipment_e\)経験値
+                    \(experience_m\)調整パラメータ \(P\)全体重み
+                    \(weightWeight\)
+                  </li>
+                  <li>
+                    <span class="mono">意思決定変数</span
+                    >：$$x_{m,e}\in\{0,1\}$$ \(x_{m,e}=1\) なら「メンバー \(m\)
+                    が装備 \(e\) を持つ」。
+                  </li>
+                  <li>
+                    <span class="mono">実際の負荷（装備価値合計）</span>：
+                    $$L_m=\sum_{e=0}^{E-1} equipment_e\,x_{m,e}$$
+                  </li>
+                  <li>
+                    <span class="mono">全体の装備価値（パイ）</span>：
+                    $$T=\sum_{m'=0}^{M-1}\sum_{e=0}^{E-1}
+                    equipment_e\,x_{m',e}$$ 制約により、割当が完全なら実質
+                    \(T\approx\sum_e equipment_e\)。
+                  </li>
+                  <li>
+                    <span class="mono">経験値の平均（正規化の基準）</span>：
+                    $$\overline{experience}=(1/M)\sum_{m'=0}^{M-1}
+                    experience_{m'}$$
+                  </li>
+                  <li>
+                    <span class="mono">経験に応じた目標比率</span>：
+                    $$r_m=(experience_m/\overline{experience})^P$$。 \(P=0\)
+                    なら全員同じ目標、\(P\) を上げるほど経験差を強く反映します。
+                  </li>
+                  <li>
+                    <span class="mono">目標負荷（ターゲット）</span>： $$\hat
+                    L_m=(T/M)\,r_m$$。
+                  </li>
+                  <li>
+                    <span class="mono">ズレ（偏差）と二乗</span>： $$(L_m-\hat
+                    L_m)^2$$。二乗により、過不足の符号を消して「大きなズレ」を強く罰します。
+                  </li>
+                  <li>
+                    <span class="mono">全員分を合計して最小化</span>：
+                    $$\sum_{m=0}^{M-1}(L_m-\hat L_m)^2\cdot weightWeight$$。
+                    これにより、装備配分が（経験に応じた）目標負荷に近づくように最適化されます。
+                  </li>
+                  <li>
+                    <span class="mono">制約（全装備を必ず1人へ）</span>：
+                    $$\sum_{m=0}^{M-1} x_{m,e}=1\ (\forall e)$$。
+                  </li>
+                </ol>
+              </MathJax>
             </article>
 
             <article class="card">
@@ -200,6 +375,8 @@ useHead({
   },
 });
 
+const nuxtApp = useNuxtApp();
+
 const deckMainEl = ref<HTMLElement | null>(null);
 
 const slideNavIds = ["intro", "overview", "stack", "model", "roadmap"];
@@ -214,7 +391,9 @@ const getActiveSlideIndex = () => {
   let bestDistance = Number.POSITIVE_INFINITY;
 
   for (let i = 0; i < slideNavIds.length; i += 1) {
-    const targetEl = document.getElementById(slideNavIds[i]);
+    const id = slideNavIds[i];
+    if (!id) continue;
+    const targetEl = document.getElementById(id);
     if (!targetEl) continue;
 
     const rect = targetEl.getBoundingClientRect();
@@ -231,7 +410,9 @@ const getActiveSlideIndex = () => {
 const scrollToSlideIndex = (index: number) => {
   if (typeof document === "undefined") return;
   const clamped = Math.max(0, Math.min(slideNavIds.length - 1, index));
-  document.getElementById(slideNavIds[clamped])?.scrollIntoView({
+  const id = slideNavIds[clamped];
+  if (!id) return;
+  document.getElementById(id)?.scrollIntoView({
     behavior: "smooth",
     block: "start",
   });
@@ -296,6 +477,7 @@ const onKeyDown = (event: KeyboardEvent) => {
 
 onMounted(() => {
   window.addEventListener("keydown", onKeyDown);
+  void nuxtApp.$typesetMath?.();
 });
 
 onBeforeUnmount(() => {
@@ -321,6 +503,13 @@ onBeforeUnmount(() => {
   position: relative;
   overflow: hidden;
 
+  .subhead {
+    margin-top: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: $on-surface-variant;
+    font-size: 0.95rem;
+    font-weight: 800;
+  }
   &::before {
     content: "";
     position: absolute;
@@ -574,6 +763,20 @@ onBeforeUnmount(() => {
 
 .muted {
   color: $on-surface;
+}
+
+.equationBlock {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid rgba($color-border, 0.55);
+  border-radius: 12px;
+  background: rgba($surface, 0.35);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  :deep(.MathJax) {
+    font-size: 0.95em;
+  }
 }
 
 @media (max-width: 960px) {

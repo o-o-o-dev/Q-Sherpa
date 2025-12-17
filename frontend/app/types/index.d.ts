@@ -104,3 +104,15 @@ export interface EquipmentAssignmentAPI {
 }
 
 export type FinalAllocationAPIResponse = EquipmentAssignmentAPI[];
+
+declare module "#app" {
+  interface NuxtApp {
+    $typesetMath?: () => Promise<void>;
+  }
+}
+
+declare module "vue" {
+  interface ComponentCustomProperties {
+    $typesetMath?: () => Promise<void>;
+  }
+}

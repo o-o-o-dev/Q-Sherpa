@@ -114,8 +114,8 @@
                   class="sliderRow__range"
                   type="range"
                   min="0"
-                  max="10"
-                  step="0.1"
+                  max="1"
+                  step="0.01"
                   @input="
                     setGroupingWeight(
                       s.key,
@@ -124,7 +124,7 @@
                   "
                 />
                 <div class="sliderRow__value">
-                  {{ groupingSettings[s.key].toFixed(1) }}
+                  {{ groupingSettings[s.key].toFixed(2) }}
                 </div>
               </div>
             </div>
@@ -410,6 +410,60 @@
             <p class="muted">装備一覧を選択して、配分最適化を実行します。</p>
           </div>
 
+          <div class="card card--settings">
+            <h3>装備配分設定（パラメータ）</h3>
+            <p class="muted">
+              配分最適化のパラメータをスライダーで調整できます。
+            </p>
+
+            <div class="sliderGrid">
+              <div class="sliderRow">
+                <div class="sliderRow__label">num_reads</div>
+                <input
+                  v-model.number="equipmentSettings.num_reads"
+                  class="sliderRow__range"
+                  type="range"
+                  min="10"
+                  max="5000"
+                  step="10"
+                />
+                <div class="sliderRow__value">
+                  {{ Math.round(equipmentSettings.num_reads) }}
+                </div>
+              </div>
+
+              <div class="sliderRow">
+                <div class="sliderRow__label">P</div>
+                <input
+                  v-model.number="equipmentSettings.P"
+                  class="sliderRow__range"
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.01"
+                />
+                <div class="sliderRow__value">
+                  {{ equipmentSettings.P.toFixed(2) }}
+                </div>
+              </div>
+
+              <div class="sliderRow">
+                <div class="sliderRow__label">weightWeight</div>
+                <input
+                  v-model.number="equipmentSettings.weightWeight"
+                  class="sliderRow__range"
+                  type="range"
+                  min="0"
+                  max="5"
+                  step="0.1"
+                />
+                <div class="sliderRow__value">
+                  {{ equipmentSettings.weightWeight.toFixed(1) }}
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div v-if="equipmentsLoading" class="status">
             <div class="spinner" aria-hidden="true" />
             <p>装備一覧を取得中...</p>
@@ -653,8 +707,8 @@ const { fetchMembers, fetchEquipments, postGrouping, postEquipmentAllocation } =
   useQsherpaApi();
 
 const currentStep = ref<Step>("members");
-const teamOptions = [2, 3, 4, 5, 6];
-const numTeams = ref<number>(4);
+const teamOptions = [2, 3, 4, 5, 6, 7, 8];
+const numTeams = ref<number>(7);
 
 type GroupingSettingsKey =
   | "groupSizeWeight"
@@ -682,16 +736,16 @@ const weightSliders = [
 const groupingSettings = ref<
   { num_reads: number } & Record<GroupingSettingsKey, number>
 >({
-  num_reads: 100,
-  groupSizeWeight: 1,
-  gradePopulationWeight: 1,
-  genderShouldBeZeroWeight: 1,
-  genderPairBonusWeight: 1,
-  rolePopulationWeight: 1,
-  driverPopulationWeight: 1,
-  carrierPopulationWeight: 1,
-  interTeamExperienceSimilarityWeight: 1,
-  intraTeamExperienceSimilarityWeight: 1,
+  num_reads: 2500,
+  groupSizeWeight: 0.03,
+  gradePopulationWeight: 0.02,
+  genderShouldBeZeroWeight: 0,
+  genderPairBonusWeight: 0,
+  rolePopulationWeight: 0.04,
+  driverPopulationWeight: 0.03,
+  carrierPopulationWeight: 0.01,
+  interTeamExperienceSimilarityWeight: 0,
+  intraTeamExperienceSimilarityWeight: 0.02,
 });
 
 const setGroupingWeight = (key: GroupingSettingsKey, raw: string) => {
@@ -701,6 +755,21 @@ const setGroupingWeight = (key: GroupingSettingsKey, raw: string) => {
     [key]: Number.isFinite(value) ? value : groupingSettings.value[key],
   };
 };
+
+type EquipmentSettings = {
+  num_reads: number;
+  P: number;
+  weightWeight: number;
+};
+
+const clamp = (v: number, min: number, max: number) =>
+  Math.max(min, Math.min(max, v));
+
+const equipmentSettings = ref<EquipmentSettings>({
+  num_reads: 100,
+  P: 0.5,
+  weightWeight: 1,
+});
 
 const notice = ref<null | { key: string; kind: NoticeKind; message: string }>(
   null
@@ -1011,7 +1080,11 @@ const runEquipmentAllocation = async () => {
     const res = await postEquipmentAllocation({
       teams: teams.value,
       equipments: selectedEquipments.value,
-      settings: {},
+      settings: {
+        num_reads: Math.max(1, Math.round(equipmentSettings.value.num_reads)),
+        P: clamp(Number(equipmentSettings.value.P), 0, 1),
+        weightWeight: Number(equipmentSettings.value.weightWeight),
+      },
     });
     allocation.value = res;
     showNotice(200, "配分最適化が完了しました");
