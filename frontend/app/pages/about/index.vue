@@ -11,6 +11,9 @@
           <button class="navPill" type="button" @click="scrollTo('intro')">
             Intro
           </button>
+          <button class="navPill" type="button" @click="scrollTo('background')">
+            背景
+          </button>
           <button class="navPill" type="button" @click="scrollTo('overview')">
             概要
           </button>
@@ -31,7 +34,7 @@
           <div class="hero__bg" aria-hidden="true" />
           <div class="slide__meta">
             <span class="slide__kicker">ABOUT</span>
-            <span class="slide__index">1 / 5</span>
+            <span class="slide__index">1 / 6</span>
           </div>
           <h2 class="slide__title">安全な班分けと、公平な装備配分</h2>
           <p class="lead">
@@ -41,10 +44,55 @@
           <div class="slide__hint">Scroll / Trackpad で次のスライドへ</div>
         </section>
 
+        <section class="slide" aria-labelledby="background">
+          <div class="slide__meta">
+            <span class="slide__kicker">BACKGROUND</span>
+            <span class="slide__index">2 / 6</span>
+          </div>
+          <h2 id="background" class="slide__title">背景：なぜ最適化が必要か</h2>
+          <div class="grid">
+            <article class="card">
+              <h3>なぜ必要か</h3>
+              <ul class="list">
+                <li>
+                  班分けは制約が多い：役割（CL/SL/係）、運転、通信キャリア、学年や経験などを同時に考慮
+                </li>
+                <li>
+                  装備分担は不公平感が出やすい：重量の平準化に加えて、経験に応じた調整も必要
+                </li>
+                <li>
+                  手作業だと試行回数が不足しがち：条件比較や説明の難しさがボトルネック
+                </li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <h3>デモの狙い</h3>
+              <ul class="list">
+                <li>入力（重み・パラメータ）→ 実行 → 出力の流れを体験できる</li>
+                <li>ステップ形式で段階的に提示し、理解コストを下げる</li>
+                <li>
+                  失敗（解なし等）も UI 上で扱い、再実行しやすい導線を用意
+                </li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <h3>4 フェーズ（UI）</h3>
+              <ol class="list">
+                <li>メンバー選択</li>
+                <li>班分け結果</li>
+                <li>装備選択</li>
+                <li>装備配分結果</li>
+              </ol>
+            </article>
+          </div>
+        </section>
+
         <section class="slide" aria-labelledby="overview">
           <div class="slide__meta">
             <span class="slide__kicker">OVERVIEW</span>
-            <span class="slide__index">2 / 5</span>
+            <span class="slide__index">3 / 6</span>
           </div>
           <h2 id="overview" class="slide__title">アプリの概要</h2>
           <div class="grid">
@@ -85,7 +133,7 @@
         <section class="slide" aria-labelledby="stack">
           <div class="slide__meta">
             <span class="slide__kicker">STACK</span>
-            <span class="slide__index">3 / 5</span>
+            <span class="slide__index">4 / 6</span>
           </div>
           <h2 id="stack" class="slide__title">スタック</h2>
           <div class="grid grid--2">
@@ -117,7 +165,7 @@
         <section class="slide" aria-labelledby="model">
           <div class="slide__meta">
             <span class="slide__kicker">MODEL</span>
-            <span class="slide__index">4 / 5</span>
+            <span class="slide__index">5 / 6</span>
           </div>
           <h2 id="model" class="slide__title">計算モデル</h2>
           <div class="grid">
@@ -330,7 +378,7 @@
         <section class="slide" aria-labelledby="roadmap">
           <div class="slide__meta">
             <span class="slide__kicker">ROADMAP</span>
-            <span class="slide__index">5 / 5</span>
+            <span class="slide__index">6 / 6</span>
           </div>
           <h2 id="roadmap" class="slide__title">今後の展開</h2>
           <div class="grid grid--2">
@@ -362,7 +410,7 @@
 
 <script setup lang="ts">
 useSeoMeta({
-  title: "About | Q-Sherpa",
+  title: "About",
 });
 
 useHead({
@@ -375,7 +423,14 @@ const nuxtApp = useNuxtApp();
 
 const deckMainEl = ref<HTMLElement | null>(null);
 
-const slideNavIds = ["intro", "overview", "stack", "model", "roadmap"];
+const slideNavIds = [
+  "intro",
+  "background",
+  "overview",
+  "stack",
+  "model",
+  "roadmap",
+];
 
 const getActiveSlideIndex = () => {
   if (typeof document === "undefined") return 0;

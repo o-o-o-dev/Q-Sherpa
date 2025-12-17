@@ -380,7 +380,8 @@
                     <span class="memberRow__name">{{ m.name }}</span>
                     <span class="memberRow__meta">
                       {{ m.role_authoritative ?? "-" }} /
-                      {{ m.role_fixed ?? "-" }}
+                      {{ m.role_fixed ?? "-" }} · {{ m.grade }}年 ·
+                      {{ genderLabel(m.gender) }} · {{ m.exp_years }}年
                     </span>
                   </li>
                 </TransitionGroup>
@@ -709,7 +710,7 @@ import type { EquipmentAPI, EquipmentAssignmentAPI, MemberAPI } from "~/types";
 import { useQsherpaApi } from "~/composables/useQsherpaApi";
 
 useSeoMeta({
-  title: "Demo | Q-Sherpa",
+  title: "Demo",
 });
 
 useHead({
@@ -754,14 +755,14 @@ const weightSliders = [
 const groupingSettings = ref<
   { num_reads: number } & Record<GroupingSettingsKey, number>
 >({
-  num_reads: 2500,
-  groupSizeWeight: 0.03,
-  gradePopulationWeight: 0.02,
+  num_reads: 3000,
+  groupSizeWeight: 0.04,
+  gradePopulationWeight: 0.03,
   genderShouldBeZeroWeight: 0,
   genderPairBonusWeight: 0,
-  rolePopulationWeight: 0.04,
+  rolePopulationWeight: 0.06,
   driverPopulationWeight: 0.03,
-  carrierPopulationWeight: 0.01,
+  carrierPopulationWeight: 0.02,
   interTeamExperienceSimilarityWeight: 0,
   intraTeamExperienceSimilarityWeight: 0.02,
 });
