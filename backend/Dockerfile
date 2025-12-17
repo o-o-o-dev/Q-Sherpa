@@ -15,7 +15,8 @@ FROM base AS builder
 
 ENV UV_COMPILE_BYTECODE=1 \
   UV_NO_INSTALLER_METADATA=1 \
-  UV_LINK_MODE=copy
+  UV_LINK_MODE=copy \
+  OMP_NUM_THREADS=1
 
 RUN --mount=from=uv,source=/uv,target=/bin/uv \
   --mount=type=cache,target=/root/.cache/uv \
